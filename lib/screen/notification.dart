@@ -34,6 +34,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           actions: [
             TextButton(
               onPressed: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -56,7 +57,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     });
 
     // app is not close but is in background
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       final title = message.notification?.title ?? "N/A";
       final body = message.notification?.body ?? "N/A";
       Navigator.push(
